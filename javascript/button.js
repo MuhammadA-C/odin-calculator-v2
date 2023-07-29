@@ -68,39 +68,15 @@ class Button {
   }
 
     /**
-     * Method to get the text inside of the multiplication button.
+     * Method to get the text inside of a DOM button element
      * @method
-     * @returns {string} - The text for the button; in this case a capital "X"
+     * @param btnElement - is the button DOM element you want to retrieve the text from.
+     * *Note: You'll need to use the result from a selector as the parameter*
+     * @type {(index : string)}
+     * @returns {string} - The text for the button
      */
-  getMultiplicationBtnText() {
-    return this.multiplicationBtn.textContent;
-  }
-
-    /**
-     * Method to get the text inside of the division button.
-     * @method
-     * @returns {string} - The text for the button; in this case a forwardslash sign "/"
-     */
-  getDivisionBtnText() {
-    return this.divisionBtn.textContent;
-  }
-
-    /**
-     * Method to get the text inside of the addition button.
-     * @method
-     * @returns {string} - The text for the button; in this case a plus sign "+"
-     */
-  getAdditionBtnText() {
-    return this.additionBtn.textContent;
-  }
-
-    /**
-     * Method to get the text inside of the subtraction button.
-     * @method
-     * @returns {string} - The text for the button; in this case a minus sign "---"
-     */
-  getSubtractionBtnText() {
-    return this.subtractionBtn.textContent;
+  getBtnText(btnElement) {
+    return btnElement.textContent;
   }
 
     /**
