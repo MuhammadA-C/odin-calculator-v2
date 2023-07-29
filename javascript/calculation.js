@@ -1,3 +1,8 @@
+/**
+ * Calculation class; used to store all the methods related to the 
+ * mathmatical logic that the calculator performs.
+ * @class
+ */
 class Calculation {
   /*
     Overview: This class was created to hold the logic

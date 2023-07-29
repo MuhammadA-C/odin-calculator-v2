@@ -19,4 +19,10 @@ const math = new Calculation();
 //////////////////////////////////////////////////////////
 
 
-console.log(buttons.subtractionBtn);
+//Adds an event listner to each of the number buttons on the calculator
+for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
+  buttons.btnNumbersNodeList[i].addEventListener("click", () => {
+    console.log(buttons.getBtnNumberText(i));
+  });
+}
+

@@ -1,3 +1,8 @@
+/**
+ * Screen class; used to store all the methods related to the calculators
+ * screen.
+ * @class
+ */
 class Screen {
   /*
     Overview: This class was created to return the DOM elements 
