@@ -13,7 +13,7 @@ class Screen {
     return document.getElementById("screen").firstChild;
   }
 
-  get screenLength() {
+  get screenValueLength() {
     return 9;
   }
 
