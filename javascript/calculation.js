@@ -4,10 +4,6 @@
  * @class
  */
 class Calculation {
-  /*
-    Overview: This class was created to hold the logic
-    to perform the math calculations.
-  */
 
  operate(operator, num1, num2) {
   switch(operator) {

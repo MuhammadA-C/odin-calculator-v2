@@ -4,10 +4,6 @@
  * @class
  */
 class Button {
-  /*
-    Overview: This class was created to return the button DOM elements.
-  */
-
     /**
      * Getter method to return the DOM Element for the Clear Button 
      * @method

@@ -4,24 +4,44 @@
  * @class
  */
 class Screen {
-  /*
-    Overview: This class was created to return the DOM elements 
-    related to the screen, and provide method(s) to update the 
-    screen value that is shown to the user.
-  */
 
+    /**
+     * Getter method to return the DOM Element for the calculators screen 
+     * @method
+     * @returns {string} - DOM Element
+     */
   get screen() {
     return document.getElementById("screen");
   }
 
+      /**
+     * Getter method to return the DOM Element for the text element 
+     * for the calculators screen
+     * @method
+     * @returns {string} - DOM Element
+     */
   get screenValue() {
     return document.getElementById("screen").firstChild;
   }
 
-  get screenValueLength() {
-    return 9;
+     /**
+     * Getter method to return the screen numbers length 
+     * which is used to specify how many numbers can be displayed 
+     * on the calculators screen
+     * @method
+     * @returns {number} - The screen numbers length  
+     */
+  get SCREEN_NUMBERS_LENGTH() {
+    const SCREEN_NUMBERS_LENGTH = 9;
+    return SCREEN_NUMBERS_LENGTH;
   }
 
+    /**
+     * Method to change the text displayed for the calculators screen
+     * @method
+     * @param value - is used to specify the value to change to
+     * @type {(value : string)}
+     */
   updateScreenValue(value) {
     document.getElementById("screen").firstChild.textContent = value;
   }
@@ -29,3 +49,4 @@ class Screen {
 }
 
 export default Screen;
+
