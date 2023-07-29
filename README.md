@@ -15,6 +15,14 @@ Calculator Functionality:
 ---
 ## Project Overview
 
+**Calculator Reference:** For the GUI and functionality of the calculator, I am using the Calculator App on iPhone as a reference.
+
+[NEED TO INSERT GUI IMAGE MADE IN FIGMA]
+
+
+[NEED TO INSERT CLASS DIAGRAM IMAGE]
+
+
 ---
 ### Previous Project Version
 For my previous version of this project was coding the calculator's functionality inside of one JavaScript file.
@@ -36,4 +44,5 @@ I had to learn the following for JavaScript:
 * How to create a constructor
 * How to create Getter & Setter methods
 * How to separate files and import files to another file
+* How to create documentation comments similar to JavaDocs - *Note: I just wanted to learn how to do this to better document my code*
 
