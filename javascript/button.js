@@ -68,6 +68,42 @@ class Button {
   }
 
     /**
+     * Method to get the text inside of the multiplication button.
+     * @method
+     * @returns {string} - The text for the button; in this case a capital "X"
+     */
+  getMultiplicationBtnText() {
+    return this.multiplicationBtn.textContent;
+  }
+
+    /**
+     * Method to get the text inside of the division button.
+     * @method
+     * @returns {string} - The text for the button; in this case a forwardslash sign "/"
+     */
+  getDivisionBtnText() {
+    return this.divisionBtn.textContent;
+  }
+
+    /**
+     * Method to get the text inside of the addition button.
+     * @method
+     * @returns {string} - The text for the button; in this case a plus sign "+"
+     */
+  getAdditionBtnText() {
+    return this.additionBtn.textContent;
+  }
+
+    /**
+     * Method to get the text inside of the subtraction button.
+     * @method
+     * @returns {string} - The text for the button; in this case a minus sign "---"
+     */
+  getSubtractionBtnText() {
+    return this.subtractionBtn.textContent;
+  }
+
+    /**
      * Method to get the text inside of the button numbers.
      * @method
      * @param index - is for selecting the specific element/button from the NodeList
