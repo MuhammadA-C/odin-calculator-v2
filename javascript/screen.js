@@ -1,15 +1,24 @@
 class Screen {
+  /*
+    Overview: This class was created to return the DOM elements 
+    related to the screen, and provide method(s) to update the 
+    screen value that is shown to the user.
+  */
+
+  get screen() {
+    return document.getElementById("screen");
+  }
 
   get screenValue() {
     return document.getElementById("screen").firstChild;
   }
 
-  set screenValue(value) {
-    document.getElementById("screen").firstChild = value;
-  }
-
   get screenLength() {
     return 9;
+  }
+
+  updateScreenValue(value) {
+    document.getElementById("screen").firstChild.textContent = value;
   }
 
 }

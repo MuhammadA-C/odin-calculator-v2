@@ -7,7 +7,6 @@ import Button from "./button.js";
 /*
 
 
-
 */
 
 //////////////////////////////////////////////////////////
@@ -17,3 +16,6 @@ const buttons = new Button();
 const math = new Calculation();
 
 //////////////////////////////////////////////////////////
+
+
+console.log(buttons.subtractionBtn);
