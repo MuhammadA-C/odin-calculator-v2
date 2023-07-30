@@ -16,6 +16,10 @@ const screen = new Screen();
 const buttons = new Button();
 const math = new Calculation();
 
+let operatorSelected = null;
+let numberOneSelected = null;
+let numberTwoSelected = null;
+
 //////////////////////////////////////////////////////////
 
 
@@ -25,6 +29,29 @@ for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
     console.log(buttons.getBtnNumberText(i));
   });
 }
+
+
+buttons.additionBtn.addEventListener("click", () => {
+  operatorSelected = buttons.getBtnText(buttons.additionBtn);
+});
+
+buttons.subtractionBtn.addEventListener("click", () => {
+  operatorSelected = buttons.getBtnText(buttons.subtractionBtn);
+});
+
+buttons.divisionBtn.addEventListener("click", () => {
+  operatorSelected = buttons.getBtnText(buttons.divisionBtn);
+});
+
+buttons.multiplicationBtn.addEventListener("click", () => {
+  operatorSelected = buttons.getBtnText(buttons.multiplicationBtn);
+});
+
+buttons.equalsBtn.addEventListener("click",() => {
+  console.log("Operator Button: " + operatorSelected);
+});
+
+
 
 
 
