@@ -19,6 +19,8 @@ import Button from "./button.js";
 
 */
 
+//Note-Bug: Need to make it so tha toperator sleected is only triggered is num1 isn't null
+
 //////////////////////////////////////////////////////////
 
 const screen = new Screen();
@@ -61,18 +63,22 @@ for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
 
 buttons.additionBtn.addEventListener("click", () => {
   operatorSelected = buttons.getBtnText(buttons.additionBtn);
+  wasDotOperatorSelected = false;
 });
 
 buttons.subtractionBtn.addEventListener("click", () => {
   operatorSelected = buttons.getBtnText(buttons.subtractionBtn);
+  wasDotOperatorSelected = false;
 });
 
 buttons.divisionBtn.addEventListener("click", () => {
   operatorSelected = buttons.getBtnText(buttons.divisionBtn);
+  wasDotOperatorSelected = false;
 });
 
 buttons.multiplicationBtn.addEventListener("click", () => {
   operatorSelected = buttons.getBtnText(buttons.multiplicationBtn);
+  wasDotOperatorSelected = false;
 });
 
 buttons.equalsBtn.addEventListener("click",() => {
@@ -88,6 +94,7 @@ buttons.equalsBtn.addEventListener("click",() => {
   */
   numberOneSelected = result;
   numberTwoSelected = null;
+  wasDotOperatorSelected = false;
 });
 
 //I figured reloading the page would be an easy way to reset the calculator
@@ -95,16 +102,32 @@ buttons.clearBtn.addEventListener("click", () => {
   location.reload();
 });
 
-/*
-  Bug- When clicking the dot operator it completly replcaes the previous values enterede.
-  Will need to fix it so that the dot is appended
-
-
-*/
 buttons.dotOperatorBtn.addEventListener("click", () => {
-  screen.updateScreenValue(buttons.getBtnText(buttons.dotOperatorBtn));
-  wasDotOperatorSelected = true;
 
+  if(wasDotOperatorSelected) {
+    return;
+  }
+
+  if(numberOneSelected === null) {
+    numberOneSelected = 0;
+    numberOneSelected += buttons.getBtnText(buttons.dotOperatorBtn);
+    screen.updateScreenValue(numberOneSelected);
+
+  } else if(numberTwoSelected === null && numberOneSelected != null && operatorSelected != null) {
+    numberTwoSelected = 0;
+    numberTwoSelected += buttons.getBtnText(buttons.dotOperatorBtn);
+    screen.updateScreenValue(numberTwoSelected);
+    
+  } else if(numberOneSelected != null && numberTwoSelected === null && operatorSelected === null) {
+    numberOneSelected += buttons.getBtnText(buttons.dotOperatorBtn);
+    screen.updateScreenValue(numberOneSelected);
+
+  } else {
+    numberTwoSelected += buttons.getBtnText(buttons.dotOperatorBtn);
+    screen.updateScreenValue(numberTwoSelected);
+  }
+
+  wasDotOperatorSelected = true;
 });
 
 
