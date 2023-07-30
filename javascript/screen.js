@@ -31,9 +31,9 @@ class Screen {
      * @method
      * @returns {number} - The screen numbers length  
      */
-  get SCREEN_LENGTH() {
-    const SCREEN_LENGTH = 9;
-    return SCREEN_LENGTH;
+  get MAX_SCREEN_LENGTH() {
+    const MAX_SCREEN_LENGTH = 9;
+    return MAX_SCREEN_LENGTH;
   }
 
     /**
@@ -54,7 +54,7 @@ class Screen {
      * to the max screen length, or False otherwise
      */
   get isNumbersOnScreenGreaterOrEqualThanMaxScreenLength() {
-    if(this.numbersOnScreen >= this.SCREEN_LENGTH) {
+    if(this.numbersOnScreen >= this.MAX_SCREEN_LENGTH) {
       return true;
     }
     return false;
