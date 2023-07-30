@@ -8,7 +8,6 @@ import Button from "./button.js";
 /*
 
   Todo:
-  * Make the dot button work
   * Make the modulus operator work
   * Make the +/- operator work
   * Make it so that if you press enter prior to entering two numbers or an oeprator it won't work
@@ -19,7 +18,7 @@ import Button from "./button.js";
 
 */
 
-//Note-Bug: Need to make it so tha toperator sleected is only triggered is num1 isn't null
+//Note: Need to make it so that after entering num1, selecting an operator, entering num2, then selecting al operator, it'll act like the equals button and do the calculation
 
 //////////////////////////////////////////////////////////
 
@@ -104,15 +103,21 @@ buttons.clearBtn.addEventListener("click", () => {
 
 buttons.dotOperatorBtn.addEventListener("click", () => {
 
+  /* 
+    This check is used to only allow the dot operator to be used once 
+    for num1 and num2 selected
+  */
   if(wasDotOperatorSelected) {
     return;
   }
 
+  //Adds a zero to the then append the dot operator to the end if no number selected
   if(numberOneSelected === null) {
     numberOneSelected = 0;
     numberOneSelected += buttons.getBtnText(buttons.dotOperatorBtn);
     screen.updateScreenValue(numberOneSelected);
 
+  //Adds a zero to the then append the dot operator to the end if no number selected
   } else if(numberTwoSelected === null && numberOneSelected != null && operatorSelected != null) {
     numberTwoSelected = 0;
     numberTwoSelected += buttons.getBtnText(buttons.dotOperatorBtn);
