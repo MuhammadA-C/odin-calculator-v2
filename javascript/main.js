@@ -28,6 +28,7 @@ const math = new Calculation();
 let operatorSelected = null;
 let numberOneSelected = null;
 let numberTwoSelected = null;
+let wasDotOperatorSelected = false;
 
 //////////////////////////////////////////////////////////
 

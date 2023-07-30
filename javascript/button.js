@@ -4,6 +4,11 @@
  * @class
  */
 class Button {
+
+  get dotOperatorBtn() {
+    
+  }
+
     /**
      * Getter method to return the DOM Element for the Clear Button 
      * @method

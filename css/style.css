@@ -73,18 +73,18 @@ button {
 }
 
 .numbers,
-.dot {
+.dot-operator {
   background-color: #414141;
 }
 
-.dot {
+.dot-operator {
   font-size: 40px;
 }
 
 .numbers,
 .operators,
 .equals-operator,
-.dot {
+.dot-operator {
   /*Changes the color of the font*/
   color: white;
 }
