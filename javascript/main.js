@@ -95,6 +95,18 @@ buttons.clearBtn.addEventListener("click", () => {
   location.reload();
 });
 
+/*
+  Bug- When clicking the dot operator it completly replcaes the previous values enterede.
+  Will need to fix it so that the dot is appended
+
+
+*/
+buttons.dotOperatorBtn.addEventListener("click", () => {
+  screen.updateScreenValue(buttons.getBtnText(buttons.dotOperatorBtn));
+  wasDotOperatorSelected = true;
+
+});
+
 
 
 

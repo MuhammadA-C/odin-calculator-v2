@@ -5,8 +5,13 @@
  */
 class Button {
 
+    /**
+     * Getter method to return the DOM Element for the Dot Operator Button 
+     * @method
+     * @returns {string} - DOM Element
+     */
   get dotOperatorBtn() {
-    
+    return document.querySelector(".dot-operator");
   }
 
     /**
