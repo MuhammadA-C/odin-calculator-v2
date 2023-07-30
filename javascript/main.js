@@ -27,13 +27,10 @@ let numberTwoSelected = null;
 for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
   buttons.btnNumbersNodeList[i].addEventListener("click", () => {
 
-    //Need to make it so that num1 keeps adding input until an operator is selected
-
-    console.log(screen.screenValue.length);
-
     if(numberOneSelected === null) {
       numberOneSelected = buttons.getBtnNumberText(i);
       screen.updateScreenValue(numberOneSelected);
+
     } else if (operatorSelected === null) {
       numberOneSelected += buttons.getBtnNumberText(i);
       screen.updateScreenValue(numberOneSelected);
@@ -45,7 +42,7 @@ for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
       screen.updateScreenValue(numberTwoSelected);
     }
 
-
+    console.log(screen.numbersOnScreen);
 
   });
 }
@@ -72,6 +69,7 @@ buttons.equalsBtn.addEventListener("click",() => {
   console.log(math.operate(operatorSelected, numberOneSelected, numberTwoSelected));
 });
 
+//I figured reloading the page would be an easy way to reset the calculator
 buttons.clearBtn.addEventListener("click", () => {
   location.reload();
 });

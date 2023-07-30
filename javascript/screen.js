@@ -6,7 +6,7 @@
 class Screen {
 
     /**
-     * Getter method to return the DOM Element for the calculators screen 
+     * Getter method to return the DOM Element for the calculator screen 
      * @method
      * @returns {string} - DOM Element
      */
@@ -16,7 +16,7 @@ class Screen {
 
       /**
      * Getter method to return the DOM Element for the text element 
-     * for the calculators screen
+     * for the calculator screen
      * @method
      * @returns {string} - DOM Element
      */
@@ -25,19 +25,43 @@ class Screen {
   }
 
      /**
-     * Getter method to return the screen numbers length 
+     * Getter method to return the screen numbers lengt, 
      * which is used to specify how many numbers can be displayed 
-     * on the calculators screen
+     * on the calculator screen
      * @method
      * @returns {number} - The screen numbers length  
      */
-  get SCREEN_NUMBERS_LENGTH() {
-    const SCREEN_NUMBERS_LENGTH = 9;
-    return SCREEN_NUMBERS_LENGTH;
+  get SCREEN_LENGTH() {
+    const SCREEN_LENGTH = 9;
+    return SCREEN_LENGTH;
   }
 
     /**
-     * Method to change the text displayed for the calculators screen
+     * Getter method to return the total numbers on the calculator screen,
+     * which can be used to limit the amount on numbers shown on the screen
+     * @method
+     * @return {number} - The total numbers on the calculator screen
+     */
+  get numbersOnScreen() {
+    return this.screenValue.textContent.length;
+    }
+
+    /**
+     * Method to check if the numbers on the calculator screen is greater than
+     * or equal to the max screen length
+     * @method
+     * @return {boolean} - True if the numbers on the screen is greater or equal 
+     * to the max screen length, or False otherwise
+     */
+  get isNumbersOnScreenGreaterOrEqualThanMaxScreenLength() {
+    if(this.numbersOnScreen >= this.SCREEN_LENGTH) {
+      return true;
+    }
+    return false;
+  }
+
+    /**
+     * Method to change the text displayed for the calculator screen
      * @method
      * @param value - is used to specify the value to change to
      * @type {(value : string)}
@@ -45,6 +69,7 @@ class Screen {
   updateScreenValue(value) {
     this.screenValue.textContent = value;
   }
+
 
 }
 
