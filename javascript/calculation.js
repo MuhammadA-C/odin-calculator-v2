@@ -8,12 +8,16 @@ class Calculation {
  operate(operator, num1, num2) {
   switch(operator) {
     case "+":
+      console.log("Add");
       return this.addition(num1, num2);
-    case "-":
+    case "---":
+      console.log("Subtract");
       return this.subtractaction(num1, num2);
     case "/":
+      console.log("Divide");
       return this.division(num1, num2);
-    case "*":
+    case "X":
+      console.log("Multiply");
       return this.multiplication(num1, num2);
   }
  }

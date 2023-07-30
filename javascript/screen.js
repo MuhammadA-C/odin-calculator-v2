@@ -43,7 +43,7 @@ class Screen {
      * @type {(value : string)}
      */
   updateScreenValue(value) {
-    document.getElementById("screen").firstChild.textContent = value;
+    this.screenValue.textContent = value;
   }
 
 }

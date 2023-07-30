@@ -26,7 +26,27 @@ let numberTwoSelected = null;
 //Adds an event listner to each of the number buttons on the calculator
 for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
   buttons.btnNumbersNodeList[i].addEventListener("click", () => {
-    console.log(buttons.getBtnNumberText(i));
+
+    //Need to make it so that num1 keeps adding input until an operator is selected
+
+    console.log(screen.screenValue.length);
+
+    if(numberOneSelected === null) {
+      numberOneSelected = buttons.getBtnNumberText(i);
+      screen.updateScreenValue(numberOneSelected);
+    } else if (operatorSelected === null) {
+      numberOneSelected += buttons.getBtnNumberText(i);
+      screen.updateScreenValue(numberOneSelected);
+    } else if (numberTwoSelected === null){
+      numberTwoSelected = buttons.getBtnNumberText(i);
+      screen.updateScreenValue(numberTwoSelected);
+    } else {
+      numberTwoSelected += buttons.getBtnNumberText(i);
+      screen.updateScreenValue(numberTwoSelected);
+    }
+
+
+
   });
 }
 
@@ -48,9 +68,13 @@ buttons.multiplicationBtn.addEventListener("click", () => {
 });
 
 buttons.equalsBtn.addEventListener("click",() => {
-  console.log("Operator Button: " + operatorSelected);
+  console.log(`Num1: ${numberOneSelected}, Num2: ${numberTwoSelected}, Operator: ${operatorSelected}`);
+  console.log(math.operate(operatorSelected, numberOneSelected, numberTwoSelected));
 });
 
+buttons.clearBtn.addEventListener("click", () => {
+  location.reload();
+});
 
 
 
