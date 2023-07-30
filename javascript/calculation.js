@@ -10,7 +10,7 @@ class Calculation {
     case "+":
       console.log("Add");
       return this.addition(num1, num2);
-    case "---":
+    case "--":
       console.log("Subtract");
       return this.subtractaction(num1, num2);
     case "/":

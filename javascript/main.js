@@ -40,12 +40,9 @@ for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
       screen.updateScreenValue(numberTwoSelected);
       
     } else {
-      //Bug
       numberTwoSelected += buttons.getBtnNumberText(i);
       screen.updateScreenValue(numberTwoSelected);
     }
-
-    console.log(screen.numbersOnScreen);
 
   });
 }
@@ -67,18 +64,19 @@ buttons.multiplicationBtn.addEventListener("click", () => {
   operatorSelected = buttons.getBtnText(buttons.multiplicationBtn);
 });
 
-/*
-
-  Bug- Equals method has a bug after pressing it.
-  Number1 and Number2 still has their values, so after clicking the 
-  equals sign the code will go down to the else clause for number two
-  and append the new number entered onto the previous value in number2
-
-
-*/
 buttons.equalsBtn.addEventListener("click",() => {
-  console.log(`Num1: ${numberOneSelected}, Num2: ${numberTwoSelected}, Operator: ${operatorSelected}`);
-  screen.updateScreenValue(math.operate(operatorSelected, numberOneSelected, numberTwoSelected));
+  const result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
+
+  screen.updateScreenValue(result);
+  console.log(`${numberOneSelected} ${operatorSelected} ${numberTwoSelected} = ${result}`);
+
+  /*
+    numberOneSelected is set to the result and numberTwoSelected is set to null
+    so that if the user tries to keep doing a calculation, it'll be reflected
+    on the previous calculation results
+  */
+  numberOneSelected = result;
+  numberTwoSelected = null;
 });
 
 //I figured reloading the page would be an easy way to reset the calculator
