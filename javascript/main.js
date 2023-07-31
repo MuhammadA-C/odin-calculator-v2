@@ -10,15 +10,13 @@ import Button from "./button.js";
   Todo:
   * Make the modulus operator work
   * Make the +/- operator work
-  * Make it so that if you press enter prior to entering two numbers or an oeprator it won't work
   * Make it so that the numbers on the screen is limited to 9 characters
-  * Make it so that if you hit the enter button after doing a calculaiton, it'll keep doing a calculaiton with the previous oeprator and 2nd number
   * Round results with long decimals 
   * Add a snarky message if the user tries to divide by 0-- in this case "Error" since that's what the calculator app on iPhone says
 
 */
 
-//Note: Need to make it so that after entering num1, selecting an operator, entering num2, then selecting al operator, it'll act like the equals button and do the calculation
+//Note: Need to make it so that after entering num1, selecting an operator, entering num2, then selecting an operator, it'll act like the equals button and do the calculation
 
 //////////////////////////////////////////////////////////
 
@@ -26,9 +24,10 @@ const screen = new Screen();
 const buttons = new Button();
 const math = new Calculation();
 
-let operatorSelected = null;
 let numberOneSelected = null;
+let copyOfNumberOneSelected = null;
 let numberTwoSelected = null;
+let operatorSelected = null;
 let wasDotOperatorSelected = false;
 
 //////////////////////////////////////////////////////////
@@ -42,10 +41,12 @@ for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
 
     if(numberOneSelected === null) {
       numberOneSelected = buttons.getBtnNumberText(i);
+      copyOfNumberOneSelected = buttons.getBtnNumberText(i);
       screen.updateScreenValue(numberOneSelected);
 
     } else if (operatorSelected === null) {
       numberOneSelected += buttons.getBtnNumberText(i);
+      copyOfNumberOneSelected += buttons.getBtnNumberText(i);
       screen.updateScreenValue(numberOneSelected);
 
     } else if (numberTwoSelected === null){
@@ -81,6 +82,21 @@ buttons.multiplicationBtn.addEventListener("click", () => {
 });
 
 buttons.equalsBtn.addEventListener("click",() => {
+
+  /*
+    The condition below is to check if the user pressed the equals key
+    prior to selecting any nunbers, selecting only one number, or 
+    selecting one number and an operator
+  */
+  if(numberOneSelected === null) {
+    return;
+  } else if(numberOneSelected != null && operatorSelected === null) {
+    screen.updateScreenValue(numberOneSelected);
+    return;
+  } else if(numberOneSelected != null && operatorSelected != null && numberTwoSelected === null) {
+    numberTwoSelected = copyOfNumberOneSelected;
+  }
+
   const result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
 
   screen.updateScreenValue(result);
@@ -111,22 +127,18 @@ buttons.dotOperatorBtn.addEventListener("click", () => {
     return;
   }
 
-  //Adds a zero to the then append the dot operator to the end if no number selected
+  //Adds a zero to the screen then appends the dot operator to the end of it
   if(numberOneSelected === null) {
     numberOneSelected = 0;
     numberOneSelected += buttons.getBtnText(buttons.dotOperatorBtn);
     screen.updateScreenValue(numberOneSelected);
-
-  //Adds a zero to the then append the dot operator to the end if no number selected
   } else if(numberTwoSelected === null && numberOneSelected != null && operatorSelected != null) {
     numberTwoSelected = 0;
     numberTwoSelected += buttons.getBtnText(buttons.dotOperatorBtn);
-    screen.updateScreenValue(numberTwoSelected);
-    
+    screen.updateScreenValue(numberTwoSelected);    
   } else if(numberOneSelected != null && numberTwoSelected === null && operatorSelected === null) {
     numberOneSelected += buttons.getBtnText(buttons.dotOperatorBtn);
     screen.updateScreenValue(numberOneSelected);
-
   } else {
     numberTwoSelected += buttons.getBtnText(buttons.dotOperatorBtn);
     screen.updateScreenValue(numberTwoSelected);
