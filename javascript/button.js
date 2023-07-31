@@ -90,7 +90,7 @@ class Button {
   }
 
     /**
-     * Method to get the text inside of the button numbers.
+     * Method to get the text inside of the button numbers
      * @method
      * @param index - is for selecting the specific element/button from the NodeList
      * @type {(index : number)}

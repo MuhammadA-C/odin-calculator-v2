@@ -16,8 +16,6 @@ import Button from "./button.js";
 
 */
 
-//Note: Need to make it so that after entering num1, selecting an operator, entering num2, then selecting an operator, it'll act like the equals button and do the calculation
-
 //////////////////////////////////////////////////////////
 
 const screen = new Screen();
@@ -62,21 +60,25 @@ for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
 }
 
 buttons.additionBtn.addEventListener("click", () => {
+  callOperateIfNumberOneAndNumberTwoWereSelected();
   operatorSelected = buttons.getBtnText(buttons.additionBtn);
   wasDotOperatorSelected = false;
 });
 
 buttons.subtractionBtn.addEventListener("click", () => {
+  callOperateIfNumberOneAndNumberTwoWereSelected();
   operatorSelected = buttons.getBtnText(buttons.subtractionBtn);
   wasDotOperatorSelected = false;
 });
 
 buttons.divisionBtn.addEventListener("click", () => {
+  callOperateIfNumberOneAndNumberTwoWereSelected();
   operatorSelected = buttons.getBtnText(buttons.divisionBtn);
   wasDotOperatorSelected = false;
 });
 
 buttons.multiplicationBtn.addEventListener("click", () => {
+  callOperateIfNumberOneAndNumberTwoWereSelected();
   operatorSelected = buttons.getBtnText(buttons.multiplicationBtn);
   wasDotOperatorSelected = false;
 });
@@ -101,15 +103,8 @@ buttons.equalsBtn.addEventListener("click",() => {
 
   screen.updateScreenValue(result);
   console.log(`${numberOneSelected} ${operatorSelected} ${numberTwoSelected} = ${result}`);
-
-  /*
-    numberOneSelected is set to the result and numberTwoSelected is set to null
-    so that if the user tries to keep doing a calculation, it'll be reflected
-    on the previous calculation results
-  */
   numberOneSelected = result;
-  numberTwoSelected = null;
-  wasDotOperatorSelected = false;
+  resetValues();
 });
 
 //I figured reloading the page would be an easy way to reset the calculator
@@ -147,6 +142,21 @@ buttons.dotOperatorBtn.addEventListener("click", () => {
   wasDotOperatorSelected = true;
 });
 
+//////////////////////////////////////////////////////////
+
+function callOperateIfNumberOneAndNumberTwoWereSelected() {
+  if(numberOneSelected != null && numberTwoSelected != null && operatorSelected != null) {
+    const result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
+    screen.updateScreenValue(result);
+    numberOneSelected = result;
+    numberTwoSelected = null;
+    }
+}
+
+function resetValues() {
+  numberTwoSelected = null;
+  wasDotOperatorSelected = false;
+}
 
 
 

@@ -1,5 +1,5 @@
 /**
- * Screen class; used to store all the methods related to the calculators
+ * Screen class; used to store all the methods related to the calculator
  * screen.
  * @class
  */
@@ -25,7 +25,7 @@ class Screen {
   }
 
      /**
-     * Getter method to return the screen numbers lengt, 
+     * Getter method to return the screen numbers length, 
      * which is used to specify how many numbers can be displayed 
      * on the calculator screen
      * @method
@@ -38,7 +38,7 @@ class Screen {
 
     /**
      * Getter method to return the total numbers on the calculator screen,
-     * which can be used to limit the amount on numbers shown on the screen
+     * which can be used to limit the amount of numbers shown on the screen
      * @method
      * @return {number} - The total numbers on the calculator screen
      */
