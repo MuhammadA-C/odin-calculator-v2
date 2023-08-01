@@ -25,6 +25,7 @@ const math = new Calculation();
 let numberOneSelected = null;
 let copyOfNumberOneSelected = null;
 let numberTwoSelected = null;
+let copyOfNumberTwoSelected = null;
 let operatorSelected = null;
 let wasDotOperatorSelected = false;
 
@@ -39,20 +40,22 @@ for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
 
     if(numberOneSelected === null) {
       numberOneSelected = buttons.getBtnNumberText(i);
-      copyOfNumberOneSelected = buttons.getBtnNumberText(i);
+      copyOfNumberOneSelected = numberOneSelected;
       screen.updateScreenValue(numberOneSelected);
 
     } else if (operatorSelected === null) {
       numberOneSelected += buttons.getBtnNumberText(i);
-      copyOfNumberOneSelected += buttons.getBtnNumberText(i);
+      copyOfNumberOneSelected = numberOneSelected;
       screen.updateScreenValue(numberOneSelected);
 
     } else if (numberTwoSelected === null){
       numberTwoSelected = buttons.getBtnNumberText(i);
+      copyOfNumberTwoSelected = numberTwoSelected;
       screen.updateScreenValue(numberTwoSelected);
       
     } else {
       numberTwoSelected += buttons.getBtnNumberText(i);
+      copyOfNumberTwoSelected = numberTwoSelected;
       screen.updateScreenValue(numberTwoSelected);
     }
 
@@ -95,9 +98,12 @@ buttons.equalsBtn.addEventListener("click",() => {
   } else if(numberOneSelected != null && operatorSelected === null) {
     screen.updateScreenValue(numberOneSelected);
     return;
-  } else if(numberOneSelected != null && operatorSelected != null && numberTwoSelected === null) {
+  } else if((numberOneSelected != "0" || numberOneSelected != "0.") && numberOneSelected != null && operatorSelected != null && numberTwoSelected === null) {
     numberTwoSelected = copyOfNumberOneSelected;
-  }
+  } else if((numberOneSelected == "0" || numberOneSelected == "0.") && operatorSelected != null && numberTwoSelected != null) {
+    numberOneSelected = copyOfNumberTwoSelected;
+    copyOfNumberOneSelected = copyOfNumberTwoSelected;
+  } 
 
   const result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
 
@@ -130,16 +136,20 @@ buttons.dotOperatorBtn.addEventListener("click", () => {
   if(numberOneSelected === null) {
     numberOneSelected = 0;
     numberOneSelected += buttons.getBtnText(buttons.dotOperatorBtn);
+    copyOfNumberOneSelected = numberOneSelected;
     screen.updateScreenValue(numberOneSelected);
   } else if(numberTwoSelected === null && numberOneSelected != null && operatorSelected != null) {
     numberTwoSelected = 0;
     numberTwoSelected += buttons.getBtnText(buttons.dotOperatorBtn);
+    copyOfNumberTwoSelected = numberTwoSelected;
     screen.updateScreenValue(numberTwoSelected);    
   } else if(numberOneSelected != null && numberTwoSelected === null && operatorSelected === null) {
     numberOneSelected += buttons.getBtnText(buttons.dotOperatorBtn);
+    copyOfNumberOneSelected = numberOneSelected;
     screen.updateScreenValue(numberOneSelected);
   } else {
     numberTwoSelected += buttons.getBtnText(buttons.dotOperatorBtn);
+    copyOfNumberTwoSelected = numberTwoSelected;
     screen.updateScreenValue(numberTwoSelected);
   }
 
@@ -161,6 +171,8 @@ function resetValues() {
   numberTwoSelected = null;
   wasDotOperatorSelected = false;
 }
+
+
 
 
 
