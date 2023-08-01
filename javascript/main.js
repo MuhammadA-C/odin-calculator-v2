@@ -6,15 +6,22 @@ import Button from "./button.js";
 
 /*
 
-  Todo:
+  Overview: This project was a part of The Odin Project Foundations course.
+  For this project we had to create a calculator with the ability to add, subtract, multiply, and divide numbers.
+
+  Below are remainiing things I decided not to finish:
   * Make the modulus operator work
   * Make the +/- operator work
-  * Note to add the +/-, I'll need to change the function that reduces numbers on screen because the "-" would count as a number/character
-  * Add a snarky message if the user tries to divide by 0-- in this case "Error" since that's what the calculator app on iPhone says
+  *   *Note to add the +/-, I'll need to change the function that reduces numbers on screen because the "-" would count as a number/character*
+  * If user tries to divide by "0", update the screen to say "Error"
+  * Make the buttons when pressed react to the user by changing color quickly 
+  * Do one last pass through to refactor and clean up the code after finishing 
+  
+  Note: I decided to stop here because overall I am satisified with what I've done up to this point. 
+  And besides one thing wich was to update the calculator to say "Error" when dividing by "0", I completed everything 
+  The Odin Project wanted from this project. 
 
 */
-
-//Note: Bug, when you try to do an operation on 0 it doesn't work
 
 //////////////////////////////////////////////////////////
 
