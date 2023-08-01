@@ -12,6 +12,8 @@ Calculator Functionality:
 * Multiplication
 * Division
 
+*Note: I didn't finish adding the functionality for the modulus operator, and the button to make positive numbers negative and negative numbers positive.*
+
 ---
 ## Project Overview
 
