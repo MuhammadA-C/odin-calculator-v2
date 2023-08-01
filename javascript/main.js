@@ -9,9 +9,12 @@ import Button from "./button.js";
   Todo:
   * Make the modulus operator work
   * Make the +/- operator work
+  * Note to add the +/-, I'll need to change the function that reduces numbers on screen because the "-" would count as a number/character
   * Add a snarky message if the user tries to divide by 0-- in this case "Error" since that's what the calculator app on iPhone says
 
 */
+
+//Note: Bug, when you try to do an operation on 0 it doesn't work
 
 //////////////////////////////////////////////////////////
 
@@ -103,8 +106,16 @@ buttons.equalsBtn.addEventListener("click",() => {
   } else if((numberOneSelected != "0" || numberOneSelected != "0.") && numberOneSelected != null && operatorSelected != null && numberTwoSelected === null) {
     numberTwoSelected = copyOfNumberOneSelected;
   } else if((numberOneSelected == "0" || numberOneSelected == "0.") && operatorSelected != null && numberTwoSelected != null) {
+    let result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
+
+    console.log(`${numberOneSelected} ${operatorSelected} ${numberTwoSelected} = ${result}`);
+    screen.updateScreenValue(result);
+
     numberOneSelected = copyOfNumberTwoSelected;
     copyOfNumberOneSelected = copyOfNumberTwoSelected;
+    numberOneSelected = result;
+    resetValues();
+    return;
   } 
 
   let result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
