@@ -1,4 +1,3 @@
-import Calculator from "./calculator.js";
 import Calculation from "./calculation.js";
 import Screen from "./screen.js";
 import Button from "./button.js";
