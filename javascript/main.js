@@ -90,8 +90,8 @@ buttons.equalsBtn.addEventListener("click",() => {
 
   /*
     The condition below is to check if the user pressed the equals key
-    prior to selecting any nunbers, selecting only one number, or 
-    selecting one number and an operator
+    prior to selecting any nunbers, selecting only one number, 
+    selecting one number and an operator, or the first number is 0
   */
   if(numberOneSelected === null) {
     return;
@@ -118,10 +118,6 @@ buttons.clearBtn.addEventListener("click", () => {
   location.reload();
 });
 
-//Bug found
-/*
-  After hitting the dot then an operator then enter, the 2nd value is NULL
-*/
 buttons.dotOperatorBtn.addEventListener("click", () => {
 
   /* 
@@ -132,7 +128,7 @@ buttons.dotOperatorBtn.addEventListener("click", () => {
     return;
   }
 
-  //Adds a zero to the screen then appends the dot operator to the end of it
+  //Adds a zero then appends the dot to the end of it
   if(numberOneSelected === null) {
     numberOneSelected = 0;
     numberOneSelected += buttons.getBtnText(buttons.dotOperatorBtn);
