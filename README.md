@@ -48,3 +48,10 @@ I had to learn the following for JavaScript:
 * How to separate files and import files to another file
 * How to create documentation comments similar to JavaDocs - *Note: I just wanted to learn how to do this to better document my code*
 
+---
+### Learnings
+
+This project taught me a lot and was a great exercise because I was re-creating the functionality of a piece of software that was already created.
+So, I was able to reference the calculator app on my iPhone while working on this project, and test out different input combinations to see
+how the app handled certain situations; then replicate it with this project.
+
