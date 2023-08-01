@@ -10,8 +10,6 @@ import Button from "./button.js";
   Todo:
   * Make the modulus operator work
   * Make the +/- operator work
-  * Make it so that the numbers on the screen is limited to 9 characters
-  * Round results with long decimals 
   * Add a snarky message if the user tries to divide by 0-- in this case "Error" since that's what the calculator app on iPhone says
 
 */
@@ -37,6 +35,11 @@ let wasDotOperatorSelected = false;
 */
 for (let i = 0; i < buttons.btnNumbersNodeList.length; i++) {
   buttons.btnNumbersNodeList[i].addEventListener("click", () => {
+
+    //Limits the numbers to be entered on the screen to 9; the dot counts as a numher too
+    if(screen.isNumbersOnScreenGreaterOrEqualThanMaxScreenLength) {
+      return;
+    }
 
     if(numberOneSelected === null) {
       numberOneSelected = buttons.getBtnNumberText(i);
@@ -105,7 +108,10 @@ buttons.equalsBtn.addEventListener("click",() => {
     copyOfNumberOneSelected = copyOfNumberTwoSelected;
   } 
 
-  const result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
+  let result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
+
+  roundDecimalNumberIfTooLong(result);
+  limitNumberLengthIfGreaterThanScreenLength(result);
 
   screen.updateScreenValue(result);
   console.log(`${numberOneSelected} ${operatorSelected} ${numberTwoSelected} = ${result}`);
@@ -156,7 +162,11 @@ buttons.dotOperatorBtn.addEventListener("click", () => {
 
 function callOperateIfNumberOneAndNumberTwoWereSelected() {
   if(numberOneSelected != null && numberTwoSelected != null && operatorSelected != null) {
-    const result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
+    let result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
+    
+    roundDecimalNumberIfTooLong(result);
+    limitNumberLengthIfGreaterThanScreenLength(result);
+    
     screen.updateScreenValue(result);
     numberOneSelected = result;
     numberTwoSelected = null;
@@ -168,8 +178,17 @@ function resetValues() {
   wasDotOperatorSelected = false;
 }
 
+function limitNumberLengthIfGreaterThanScreenLength(result) {
+  if(String(result).length > screen.MAX_SCREEN_LENGTH) {
+    result = String(result).slice(0, screen.MAX_SCREEN_LENGTH);
+  }
+}
 
-
+function roundDecimalNumberIfTooLong(result) {
+  if(String(result).length >= 5) {
+    result = Math.floor(result);
+  }
+}
 
 
 
