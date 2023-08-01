@@ -92,7 +92,6 @@ buttons.multiplicationBtn.addEventListener("click", () => {
 });
 
 buttons.equalsBtn.addEventListener("click",() => {
-
   /*
     The condition below is to check if the user pressed the equals key
     prior to selecting any nunbers, selecting only one number, 
@@ -100,11 +99,14 @@ buttons.equalsBtn.addEventListener("click",() => {
   */
   if(numberOneSelected === null) {
     return;
+
   } else if(numberOneSelected != null && operatorSelected === null) {
     screen.updateScreenValue(numberOneSelected);
     return;
+
   } else if((numberOneSelected != "0" || numberOneSelected != "0.") && numberOneSelected != null && operatorSelected != null && numberTwoSelected === null) {
     numberTwoSelected = copyOfNumberOneSelected;
+
   } else if((numberOneSelected == "0" || numberOneSelected == "0.") && operatorSelected != null && numberTwoSelected != null) {
     let result = math.operate(operatorSelected, numberOneSelected, numberTwoSelected);
 
