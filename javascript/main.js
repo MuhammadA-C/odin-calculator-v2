@@ -112,6 +112,10 @@ buttons.clearBtn.addEventListener("click", () => {
   location.reload();
 });
 
+//Bug found
+/*
+  After hitting the dot then an operator then enter, the 2nd value is NULL
+*/
 buttons.dotOperatorBtn.addEventListener("click", () => {
 
   /* 
